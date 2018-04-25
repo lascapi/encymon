@@ -21,17 +21,20 @@ except:
 
 #opendatabase connection
 client = pymongo.MongoClient(configDataBase.read())
-#db = client.test
+db = client.test
 
-#collection = db.test_collection
+collection = db.test_collection
 
-db = client.get_default_database()
-
+print "db ==================="
 print db
+print "collection ================"
+print collection
+#print "item count ==============="
+#print collection.count()
 
-print db.collection_names()
-
-
+item = collection.insert_one({"test":"1"}).inserted_id
+print "item ============"
+print item
 #for item in collection.find():
 #	print item
 
