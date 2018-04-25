@@ -1,12 +1,14 @@
 #mongoBD
 import pymongo
 import sys
+import os
+import ssl
 
 print "Encymon"
 
 #test for pymongo's version
 if pymongo.__version__ == "3.4.0":
-	print "Good version => pymongo 3.4.0"
+	print "pymongo's version 3.4.0, done"
 else: 
 	print "pymongo 3.4.0 require. You have pymongo " + pymongo.__version__
 
@@ -19,9 +21,18 @@ except:
 
 #opendatabase connection
 client = pymongo.MongoClient(configDataBase.read())
-db = client.test
+#db = client.test
 
 #collection = db.test_collection
 
-#print collection
+db = client.get_default_database()
+
+print db
+
+print db.collection_names()
+
+
+#for item in collection.find():
+#	print item
+
 print "end"
