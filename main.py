@@ -27,8 +27,10 @@ client = pymongo.MongoClient(configDataBase.read())
 
 db = client.get_default_database()
 
+print "db = "
 print db
 
+print "db.collection_names() = "
 print db.collection_names()
 
 
