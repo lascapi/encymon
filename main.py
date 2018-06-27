@@ -19,23 +19,36 @@ except:
 	print "I can't open ./config.database.txt"
 	print "Can you verify if it created !"
 
+#read the xml file (little local database) 
+try: 
+	xmlFile = open("./database.xml","r")
+except: 
+	print "I can't open ./database.xml"
+	print "Can you verify if it created !"
+
 #opendatabase connection
 client = pymongo.MongoClient(configDataBase.read())
-db = client.test
 
-collection = db.test_collection
+#db = client.test
+#collection = db.test_collection
+
+db = client.peoples
+collection_stars = db.stars
+
 
 print "db ==================="
 print db
 print "collection ================"
-print collection
-#print "item count ==============="
-#print collection.count()
+print collection_stars
+print "item count ==============="
+print collection_stars.count()
 
-item = collection.insert_one({"test":"1"}).inserted_id
-print "item ============"
-print item
+#item = collection.insert_one({"test":"1"}).inserted_id
+#print "item ============"
+#print item
+
 #for item in collection.find():
 #	print item
 
+client.close()
 print "end"
